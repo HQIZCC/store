@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 th:text="${resource.uploadUrl}"></h1>
+	<div th:each="user:${userList}">
+		<div th:object=${user}>
+			用户名<input th:value="*{userName}">
+			年龄 <input th:value=*{age}>
+			手机号<input th:value="*{mobile}">
+		</div>
+	</div>
+</body>
+</html>
