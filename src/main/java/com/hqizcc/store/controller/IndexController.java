@@ -25,6 +25,7 @@ public class IndexController {
 		
 		List<User> userList = userService.findAll();
 		
+		System.out.println(resource.toString());
 		modelMap.addAttribute("resource", resource);
 		modelMap.addAttribute("userList", userList);
 		
