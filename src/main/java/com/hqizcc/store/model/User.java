@@ -4,11 +4,11 @@ import com.hqizcc.store.model.base.BaseModel;
 
 public class User extends BaseModel {
 
-	private String userName;
-	private String loginName;
-	private Integer age;
-	private Integer sex;
-	private String mobile;
+	private String userName;	// 用户名
+	private String loginName;	// 登录名，昵称
+	private Integer age;		// 年龄
+	private Integer sex;		// 性别 1男 0女
+	private String mobile;		// 手机号
 	
 	public String getUserName() {
 		return userName;

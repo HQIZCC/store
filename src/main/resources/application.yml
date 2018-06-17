@@ -7,19 +7,33 @@ server:
   tomcat:
     max-threads: 130
     uri-encoding: UTF-8
-  
+
+#开发环境让thymeleaf的缓存设置为false，生产环境定义为true即开启缓存
 spring:
   thymeleaf:
     cache: false
+    prefix: classpath:/templates/pages/
+    mode: LEGACYHTML5  
+    servlet:
+      content-type: text/html
   devtools:
     restart:
       enabled: true
       additional-exclude: src/main/java
   datasource:
-    url: jdbc:mysql://localhost:3306/store?useUnicode=true&characterEncoding=utf8
-    username: huangqian
-    password: 0805
+    url: jdbc:mysql://localhost:3306/store?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
     driver-class-name: com.mysql.jdbc.Driver
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2048MB
+      max-request-size: 20MB
+  http:
+    encoding:
+      charset: UTF-8
 mybatis:
   type-aliases-package: com.hqizcc.store.model
   mapper-locations: classpath:mapper/*.xml

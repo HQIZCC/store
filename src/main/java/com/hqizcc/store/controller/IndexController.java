@@ -1,34 +1,30 @@
 package com.hqizcc.store.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.hqizcc.store.model.ProjectUseModel;
-import com.hqizcc.store.model.User;
-import com.hqizcc.store.service.user.UserService;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class IndexController {
-
-	@Autowired
-	private ProjectUseModel resource;
-
-	@Autowired
-	private UserService userService;
 	
+	private static final String VIEW_BASE = "index/";
+
+	/**
+	 * 跳转到登录首页
+	 * @return
+	 */
 	@RequestMapping(value="/index")
-	public String toIndex(ModelMap modelMap) {
+	public String toIndex() {
 		
-		List<User> userList = userService.findAll();
+		return VIEW_BASE + "index";
+	}
+	
+	@RequestMapping(value="/image/upload", method=RequestMethod.POST)
+	@ResponseBody
+	public String toUpload(MultipartFile file) {
 		
-		System.out.println(resource.toString());
-		modelMap.addAttribute("resource", resource);
-		modelMap.addAttribute("userList", userList);
-		
-		return "index";
+		return "ok";
 	}
 }
